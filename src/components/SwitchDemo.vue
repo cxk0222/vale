@@ -47,6 +47,8 @@
   <p>Switch Component</p>
   <p>Switch Component</p>
   <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
 </div>
 </template>
 
