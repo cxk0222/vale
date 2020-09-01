@@ -1,5 +1,53 @@
 <template>
-<div>Switch Component</div>
+<div>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+  <p>Switch Component</p>
+</div>
 </template>
 
 <script>
