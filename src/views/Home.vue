@@ -1,15 +1,15 @@
 <template>
-  <div>
-    <Topnav />
-    <div class="banner">
-      <h1>Vale UI</h1>
-      <h2>一个轻量的 UI 框架</h2>
-      <div class="actions">
-        <a href="">Github</a>
-        <a href="">开始</a>
-      </div>
+<div>
+  <Topnav />
+  <div class="banner">
+    <h1>Vale UI</h1>
+    <h2>一个轻量的 UI 框架</h2>
+    <div class="actions">
+      <a href="https://github.com">GitHub</a>
+      <router-link to="/doc">开始</router-link>
     </div>
   </div>
+</div>
 </template>
 
 <script lang="ts">
@@ -22,7 +22,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.topnav {
-  border: 1px solid red;
+.banner {
+  padding: 100px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: lightgreen;
+
+  >.actions {
+    padding: 8px 0;
+
+    a {
+      margin: 0 8px;
+      background: #fff;
+      display: inline-block;
+      $h: 28px;
+      height: $h;
+      line-height: $h;
+      border-radius: $h/2;
+      padding: 0 8px;
+    }
+  }
 }
 </style>
