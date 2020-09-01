@@ -3,10 +3,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 ul,
 ol {
   list-style: none;
 }
+
 a {
   text-decoration: none;
   color: inherit;
@@ -14,6 +16,10 @@ a {
     border-bottom: 1px solid;
     cursor: pointer;
   }
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-weight: normal;
 }
 
 body {
