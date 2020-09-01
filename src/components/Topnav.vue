@@ -17,7 +17,6 @@ import {
 export default {
   setup() {
     const menuVisible = inject < Ref < boolean >> ('menuVisible')
-    console.log('menuVisible in topnav', menuVisible.value)
 
     const toggleMenu = () => {
       menuVisible.value = !menuVisible.value
@@ -56,7 +55,6 @@ export default {
   }
 
   >.toggleAside {
-    display: inline-block;
     width: 24px;
     height: 24px;
     background: red;
