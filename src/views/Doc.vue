@@ -89,6 +89,7 @@ aside {
   top: 0;
   left: 0;
   padding-top: 70px;
+  z-index: 9;
   height: 100%;
 
   >h2 {

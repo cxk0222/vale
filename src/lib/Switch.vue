@@ -1,5 +1,5 @@
 <template>
-<button :class="{'checked': value}" @click="toggle">
+<button class="vale-switch" :class="{'vale-checked': value}" @click="toggle">
   <span></span>
 </button>
 <div>{{ value }}</div>
@@ -31,7 +31,7 @@ export default {
 $h: 22px;
 $h2: $h - 4px;
 
-button {
+.vale-switch {
   height: $h;
   width: $h*2;
   border: none;
@@ -44,7 +44,7 @@ button {
     outline: none;
   }
 
-  &.checked {
+  &.vale-checked {
     background: #1890ff;
 
     >span {
@@ -58,7 +58,7 @@ button {
     }
   }
 
-  &.checked:active {
+  &.vale-checked:active {
     >span {
       width: $h2 + 4px;
       margin-left: -4px;
