@@ -2,7 +2,21 @@
 <div>Button 示例</div>
 <h1>示例</h1>
 <div>
-  <Button @click="onClick">你好</Button>
+  <div>
+    <Button>你好</Button>
+  </div>
+  <br>
+  <div>
+    <Button theme="button">你好</Button>
+  </div>
+  <br>
+  <div>
+    <Button theme="link">你好</Button>
+  </div>
+  <br>
+  <div>
+    <Button theme="text">你好</Button>
+  </div>
 </div>
 </template>
 
