@@ -1,26 +1,34 @@
 <template>
-  <div class="vale-dialog-overlay"></div>
-  <div class="vale-dialog-wrapper">
-    <div class="vale-dialog">
-      <header>
-        <span>标题</span>
-        <span class="vale-dialog-close"></span>
-      </header>
-      <main>
-        <p>第一行</p>
-        <p>第二行</p>
-      </main>
-      <footer>
-        <Button level="main">Ok</Button>
-        <Button>Cancel</Button>
-      </footer>
+  <template v-if="visible">
+    <div class="vale-dialog-overlay"></div>
+    <div class="vale-dialog-wrapper">
+      <div class="vale-dialog">
+        <header>
+          <span>标题</span>
+          <span class="vale-dialog-close"></span>
+        </header>
+        <main>
+          <p>第一行</p>
+          <p>第二行</p>
+        </main>
+        <footer>
+          <Button level="main">OK</Button>
+          <Button>Cancel</Button>
+        </footer>
+      </div>
     </div>
-  </div>
+  </template>
 </template>
 
 <script lang="ts">
 import Button from './Button.vue'
 export default {
+  props: {
+    visible: {
+      type: Boolean,
+      default: false,
+    }
+  },
   components: {
     Button
   }
