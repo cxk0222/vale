@@ -8,7 +8,15 @@
         v-model:visible="visible1"
         :ok="ok"
         :cancel="cancel"
-      />
+      >
+        <template v-slot:title>
+          <strong>title</strong>
+        </template>
+        <template v-slot:content>
+          <h3>content</h3>
+          <h3>description</h3>
+        </template>
+      </Dialog>
     </div>
 
     <h2>支持异步关闭</h2>
@@ -18,7 +26,15 @@
         v-model:visible="visible2"
         :ok="asyncOk"
         :cancel="cancel"
-      />
+      >
+        <template v-slot:title>
+          <strong>title</strong>
+        </template>
+        <template v-slot:content>
+          <h3>content</h3>
+          <h3>description</h3>
+        </template>
+      </Dialog>
     </div>
   </div>
 </template>

@@ -4,12 +4,11 @@
     <div class="vale-dialog-wrapper">
       <div class="vale-dialog">
         <header>
-          <span>标题</span>
+          <slot name="title" />
           <span class="vale-dialog-close" @click="close"></span>
         </header>
         <main>
-          <p>第一行</p>
-          <p>第二行</p>
+          <slot name="content" />
         </main>
         <footer>
           <Button level="main" @click="ok" :loading="loading">OK</Button>
