@@ -1,5 +1,5 @@
 <template>
-<button class="vale-button" :class="classes">
+<button class="vale-button" :class="classes" :disabled="disabled">
   <slot />
 </button>
 </template>
@@ -21,6 +21,10 @@ export default {
     level: {
       type: String,
       default: 'normal',
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     }
   },
   setup(props) {
@@ -50,6 +54,7 @@ $border-color: #d9d9d9;
 $color: #333;
 $blue: #40a9ff;
 $red: red;
+$grey: grey;
 $radius: 4px;
 
 .vale-button {
@@ -175,6 +180,23 @@ $radius: 4px;
       &:focus {
         color: darken($red, 10%);
       }
+    }
+  }
+
+  &.vale-theme-button {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
+      &:hover {
+        border-color: $grey;
+      }
+    }
+  }
+
+  &.vale-theme-link, &.vale-theme-text {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
     }
   }
 }
