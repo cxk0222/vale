@@ -36,13 +36,19 @@
         </template>
       </Dialog>
     </div>
+
+    <h2>编程式使用</h2>
+    <div>
+      <Button @click="showDialog">open</Button>
+    </div>
   </div>
 </template>
 
 <script>
 import Dialog from '../lib/Dialog.vue'
 import Button from '../lib/Button.vue'
-import { ref } from 'vue'
+import { ref, h,  } from 'vue'
+import { openDialog } from '../lib/openDialog'
 export default {
   components: {
     Dialog,
@@ -69,9 +75,21 @@ export default {
       await sleep(2000)
       return true
     }
-    const cancel = () => {
+    const cancel = () => {}
 
+    const showDialog = () => {
+      openDialog({
+        title: h('strong', {}, 'title'),
+        content: 'Hello',
+        ok() {
+          console.log('ok')
+        },
+        cancel() {
+          console.log('cancel')
+        }
+      })
     }
+
     return {
       visible1,
       visible2,
@@ -80,6 +98,7 @@ export default {
       ok,
       asyncOk,
       cancel,
+      showDialog,
     }
   }
 }
