@@ -67,6 +67,10 @@
   <div>
     <Button loading>加载中</Button>
   </div>
+  <h2>click 事件</h2>
+  <div>
+    <Button @click="onClick">click</Button>
+  </div>
 </div>
 </template>
 
@@ -78,7 +82,7 @@ export default {
   },
   setup() {
     const onClick = () => {
-      console.log('hi')
+      alert('hi')
     }
     return {
       onClick
