@@ -1,36 +1,77 @@
 <template>
-  <template v-if="visible">
-    <div class="vale-dialog-overlay"></div>
+  <div v-if="visible">
+    <div class="vale-dialog-overlay" @click="onClickOverlay"></div>
     <div class="vale-dialog-wrapper">
       <div class="vale-dialog">
         <header>
           <span>标题</span>
-          <span class="vale-dialog-close"></span>
+          <span class="vale-dialog-close" @click="close"></span>
         </header>
         <main>
           <p>第一行</p>
           <p>第二行</p>
         </main>
         <footer>
-          <Button level="main">OK</Button>
-          <Button>Cancel</Button>
+          <Button level="main" @click="ok" :loading="loading">OK</Button>
+          <Button @click="cancel">Cancel</Button>
         </footer>
       </div>
     </div>
-  </template>
+  </div>
 </template>
 
 <script lang="ts">
 import Button from './Button.vue'
+import { ref } from 'vue'
 export default {
   props: {
     visible: {
       type: Boolean,
       default: false,
+    },
+    closeOnClickOverlay: {
+      type: Boolean,
+      default: true,
+    },
+    ok: {
+      type: Function,
+    },
+    cancel: {
+      type: Function,
     }
   },
   components: {
     Button
+  },
+  setup(props, context) {
+    const loading = ref(false)
+    const close = () => {
+      console.log('close')
+      context.emit('update:visible', false)
+    }
+    const onClickOverlay = () => {
+      if (props.closeOnClickOverlay) {
+        close()
+      }
+    }
+    const ok = async () => {
+      loading.value = true
+      if (props.ok && await props.ok() !== false) {
+        loading.value = false
+        close()
+      }
+    }
+    const cancel = () => {
+      context.emit('cancel')
+      close()
+    }
+    return {
+      close,
+      onClickOverlay,
+      loading,
+      ok,
+      cancel,
+    }
   }
 }
 </script>
@@ -73,6 +114,8 @@ $border-color: #d9d9d9;
     padding: 12px 16px;
   }
   >footer {
+    display: flex;
+    justify-content: flex-end;
     border-top: 1px solid $border-color;
     padding: 12px 16px;
     text-align: right;
