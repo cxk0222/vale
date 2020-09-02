@@ -17,17 +17,23 @@ export default {
     size: {
       type: String,
       default: 'normal',
+    },
+    level: {
+      type: String,
+      default: 'normal',
     }
   },
   setup(props) {
     const {
       theme,
-      size
+      size,
+      level,
     } = props
     const classes = computed(() => {
       return {
         [`vale-theme-${theme}`]: theme,
         [`vale-size-${size}`]: size,
+        [`vale-level-${level}`]: level,
       }
     })
 
@@ -43,6 +49,7 @@ $h: 32px;
 $border-color: #d9d9d9;
 $color: #333;
 $blue: #40a9ff;
+$red: red;
 $radius: 4px;
 
 .vale-button {
@@ -112,6 +119,63 @@ $radius: 4px;
     font-size: 12px;
     height: 20px;
     padding: 0 4px;
+  }
+
+  &.vale-theme-button {
+    &.vale-level-main {
+      background: $blue;
+      color: white;
+      border-color: $blue;
+
+      &:hover,
+      &:focus {
+        background: darken($blue, 10%);
+        border-color: darken($blue, 10%);
+      }
+    }
+
+    &.vale-level-danger {
+      background: $red;
+      border-color: $red;
+      color: white;
+
+      &:hover,
+      &:focus {
+        background: darken($red, 10%);
+        border-color: darken($red, 10%);
+      }
+    }
+  }
+
+  &.vale-theme-link {
+    &.vale-level-danger {
+      color: $red;
+
+      &:hover,
+      &:focus {
+        color: darken($red, 10%);
+      }
+    }
+  }
+
+  &.vale-theme-text {
+    &.vale-level-main {
+      color: $blue;
+
+      &:hover,
+      &:focus {
+        color: darken($blue, 10%);
+      }
+    }
+
+    &.vale-level-danger {
+      color: $red;
+
+      &:hover,
+      &:focus {
+        color: darken($red, 10%);
+      }
+    }
   }
 }
 </style>
