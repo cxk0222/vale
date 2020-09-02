@@ -1,21 +1,23 @@
 <template>
   <div v-if="visible">
-    <div class="vale-dialog-overlay" @click="onClickOverlay"></div>
-    <div class="vale-dialog-wrapper">
-      <div class="vale-dialog">
-        <header>
-          <slot name="title" />
-          <span class="vale-dialog-close" @click="close"></span>
-        </header>
-        <main>
-          <slot name="content" />
-        </main>
-        <footer>
-          <Button level="main" @click="ok" :loading="loading">OK</Button>
-          <Button @click="cancel">Cancel</Button>
-        </footer>
+    <Teleport to="body">
+      <div class="vale-dialog-overlay" @click="onClickOverlay"></div>
+      <div class="vale-dialog-wrapper">
+        <div class="vale-dialog">
+          <header>
+            <slot name="title" />
+            <span class="vale-dialog-close" @click="close"></span>
+          </header>
+          <main>
+            <slot name="content" />
+          </main>
+          <footer>
+            <Button level="main" @click="ok" :loading="loading">OK</Button>
+            <Button @click="cancel">Cancel</Button>
+          </footer>
+        </div>
       </div>
-    </div>
+    </Teleport>
   </div>
 </template>
 
