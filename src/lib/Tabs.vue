@@ -1,6 +1,6 @@
 <template>
   <div class="vale-tabs">
-    <div class="vale-tabs-nav">
+    <div class="vale-tabs-nav" ref="container">
       <div
         v-for="(title, index) in titles"
         :ref="el => { if (el) navItems[index] = el }"
@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import Tab from './Tab.vue'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUpdated } from 'vue'
 export default {
   props: {
     selected: {
@@ -40,17 +40,20 @@ export default {
   setup(props, context) {
     const navItems = ref < HTMLDivElement[] > ([])
     const indicator = ref < HTMLDivElement > (null)
-    onMounted(() => {
+    const container = ref < HTMLDivElement > (null)
+    const x = () => {
       const divs = navItems.value
-      console.log({
-        ...divs
-      })
       const result = divs.filter(div => {
         return div.classList.contains('selected')
       })[0]
-      const { width } = result.getBoundingClientRect()
+      const { width, left: left2 } = result.getBoundingClientRect()
       indicator.value.style.width = width + 'px'
-    })
+      const { left: left1 } = container.value.getBoundingClientRect()
+      const left = left2 - left1
+      indicator.value.style.left = left + 'px'
+    }
+    onMounted(x)
+    onUpdated(x)
 
     const defaults = context.slots.default()
     // 打 log 是编程的精髓
@@ -73,6 +76,7 @@ export default {
       select,
       navItems,
       indicator,
+      container,
     }
   }
 }
@@ -105,7 +109,7 @@ $border-color: #d9d9d9;
       background: $blue;
       left: 0;
       bottom: -1px;
-      width: 100px;
+      transition: all 250ms;
     }
   }
   &-content {
