@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import Tab from './Tab.vue'
-import { ref, onMounted, onUpdated } from 'vue'
+import { ref, onMounted, watchEffect } from 'vue'
 export default {
   props: {
     selected: {
@@ -41,16 +41,15 @@ export default {
     const selectedItem = ref < HTMLDivElement > (null)
     const indicator = ref < HTMLDivElement > (null)
     const container = ref < HTMLDivElement > (null)
-    const changeIndicatorPosition = () => {
-      console.log('selectedItem', selectedItem)
-      const { width, left: left2 } = selectedItem.value.getBoundingClientRect()
-      indicator.value.style.width = width + 'px'
-      const { left: left1 } = container.value.getBoundingClientRect()
-      const left = left2 - left1
-      indicator.value.style.left = left + 'px'
-    }
-    onMounted(changeIndicatorPosition)
-    onUpdated(changeIndicatorPosition)
+    onMounted(() => {
+      watchEffect(() => {
+        const { width, left: left2 } = selectedItem.value.getBoundingClientRect()
+        indicator.value.style.width = width + 'px'
+        const { left: left1 } = container.value.getBoundingClientRect()
+        const left = left2 - left1
+        indicator.value.style.left = left + 'px'
+      })
+    })
 
     const defaults = context.slots.default()
     // 打 log 是编程的精髓
