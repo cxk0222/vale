@@ -2,10 +2,11 @@
   <div class="vale-tabs">
     <div class="vale-tabs-nav">
       <div
+        v-for="(title, index) in titles"
         class="vale-tabs-nav-item"
         :class="{'selected': title === selected}"
-        v-for="(title, index) in titles"
         :key="index"
+        @click="select(title)"
       >
         {{ title }}
       </div>
@@ -14,6 +15,7 @@
       <component
         class="vale-tabs-content-item"
         v-for="(c, index) in defaults"
+        :class="{'selected': c.props.title === selected}"
         :key="index"
         :is="c"
       />
@@ -40,16 +42,21 @@ export default {
     const titles = defaults.map(tag => {
       return tag.props.title
     })
+    const select = (title: string) => {
+      console.log('title', title)
+      context.emit('update:selected', title)
+    }
 
     return {
       defaults,
-      titles
+      titles,
+      select
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $blue: #40a9ff;
 $color: #333;
 $border-color: #d9d9d9;
@@ -72,6 +79,12 @@ $border-color: #d9d9d9;
   }
   &-content {
     padding: 8px 0;
+    &-item {
+      display: none;
+      &.selected {
+        display: block;
+      }
+    }
   }
 }
 </style>
