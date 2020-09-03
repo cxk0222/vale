@@ -3,6 +3,7 @@
     <div class="vale-tabs-nav">
       <div
         v-for="(title, index) in titles"
+        :ref="el => { if (el) navItems[index] = el }"
         class="vale-tabs-nav-item"
         :class="{'selected': title === selected}"
         :key="index"
@@ -10,7 +11,10 @@
       >
         {{ title }}
       </div>
-      <div class="vale-tabs-nav-indicator"></div>
+      <div
+        class="vale-tabs-nav-indicator"
+        ref="indicator"
+      ></div>
     </div>
     <div class="vale-tabs-content">
       <component
@@ -26,6 +30,7 @@
 
 <script lang="ts">
 import Tab from './Tab.vue'
+import { ref, onMounted } from 'vue'
 export default {
   props: {
     selected: {
@@ -33,6 +38,20 @@ export default {
     }
   },
   setup(props, context) {
+    const navItems = ref < HTMLDivElement[] > ([])
+    const indicator = ref < HTMLDivElement > (null)
+    onMounted(() => {
+      const divs = navItems.value
+      console.log({
+        ...divs
+      })
+      const result = divs.filter(div => {
+        return div.classList.contains('selected')
+      })[0]
+      const { width } = result.getBoundingClientRect()
+      indicator.value.style.width = width + 'px'
+    })
+
     const defaults = context.slots.default()
     // 打 log 是编程的精髓
     defaults.forEach(tag => {
@@ -51,7 +70,9 @@ export default {
     return {
       defaults,
       titles,
-      select
+      select,
+      navItems,
+      indicator,
     }
   }
 }
