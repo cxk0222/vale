@@ -3,7 +3,7 @@
     <div class="vale-tabs-nav" ref="container">
       <div
         v-for="(title, index) in titles"
-        :ref="el => { if (el) navItems[index] = el }"
+        :ref="el => { if (title === selected) selectedItem = el }"
         class="vale-tabs-nav-item"
         :class="{'selected': title === selected}"
         :key="index"
@@ -38,22 +38,19 @@ export default {
     }
   },
   setup(props, context) {
-    const navItems = ref < HTMLDivElement[] > ([])
+    const selectedItem = ref < HTMLDivElement > (null)
     const indicator = ref < HTMLDivElement > (null)
     const container = ref < HTMLDivElement > (null)
-    const x = () => {
-      const divs = navItems.value
-      const result = divs.filter(div => {
-        return div.classList.contains('selected')
-      })[0]
-      const { width, left: left2 } = result.getBoundingClientRect()
+    const changeIndicatorPosition = () => {
+      console.log('selectedItem', selectedItem)
+      const { width, left: left2 } = selectedItem.value.getBoundingClientRect()
       indicator.value.style.width = width + 'px'
       const { left: left1 } = container.value.getBoundingClientRect()
       const left = left2 - left1
       indicator.value.style.left = left + 'px'
     }
-    onMounted(x)
-    onUpdated(x)
+    onMounted(changeIndicatorPosition)
+    onUpdated(changeIndicatorPosition)
 
     const defaults = context.slots.default()
     // 打 log 是编程的精髓
@@ -74,7 +71,7 @@ export default {
       defaults,
       titles,
       select,
-      navItems,
+      selectedItem,
       indicator,
       container,
     }
