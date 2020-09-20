@@ -16,7 +16,7 @@
         <li>
           <v-icon name="vue" />
           <h3>基于 Vue3</h3>
-          <p>骄傲地使用了 Vue3 Composition API</p>
+          <p>使用了最新的 Vue3 Composition API</p>
         </li>
         <li>
           <v-icon name="ts" />
@@ -45,10 +45,12 @@ export default {
 <style lang="scss" scoped>
 $green: #02bcb0;
 $border-radius: 4px;
-$color: #007974;
+// $color: #007974;
+$color: #ffffff;
 
 .topnavAndBanner {
-  background: linear-gradient(145deg, rgba(227, 255, 253, 1) 0%, rgba(183, 233, 230, 1) 100%);
+  // background: linear-gradient(145deg, rgba(227, 255, 253, 1) 0%, rgba(183, 233, 230, 1) 100%);
+  background: linear-gradient(180deg,#1867c0,#5cbbf6);
   clip-path: ellipse(80% 60% at 50% 40%);
 }
 
@@ -80,12 +82,14 @@ $color: #007974;
 
 .features {
   margin: 64px auto;
-  width: 400px;
+  padding: 0 24px;
   @media (min-width: 800px) {
     width: 800px;
+    padding: 0;
   }
   @media (min-width: 1200px) {
     width: 1200px;
+    padding: 0;
   }
   >ul {
     display: flex;
