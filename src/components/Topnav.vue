@@ -78,6 +78,7 @@ $color: #007974;
 
     >li {
       margin: 0 1em;
+      list-style: none;
     }
   }
 

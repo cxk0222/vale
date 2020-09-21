@@ -124,6 +124,7 @@ $color: #ffffff;
     flex-wrap: wrap;
     >li {
       margin: 16px 0;
+      padding: 0 12px;
       display: grid;
       justify-content: start;
       align-content: space-between;
