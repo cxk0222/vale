@@ -1,27 +1,45 @@
 <template>
-<button class="vale-switch" :class="{'vale-checked': value}" @click="toggle">
-  <span></span>
-</button>
-<div>{{ value }}</div>
+  <button
+    class="vale-switch"
+    :class="classes"
+    @click="toggle"
+  >
+    <span></span>
+  </button>
 </template>
 
 <script lang="ts">
 import {
-  ref
+  ref,
+  computed
 } from 'vue'
 export default {
   props: {
-    value: Boolean
+    value: Boolean,
+    disabled: Boolean,
   },
   setup(props, context) {
-    const checked = ref(true)
+    const {
+      value,
+      disabled,
+    } = props
 
     const toggle = () => {
+      console.log('toggle')
       context.emit('update:value', !props.value)
+      console.log(props.value)
     }
+
+    const classes = computed(() => {
+      return {
+        [`vale-checked`]: value,
+        [`vale-disabled`]: disabled,
+      }
+    })
 
     return {
       toggle,
+      classes
     }
   }
 }
@@ -50,6 +68,10 @@ $h2: $h - 4px;
     >span {
       left: calc(100% - #{$h2} - 2px);
     }
+  }
+
+  &.vale-disabled {
+    cursor: not-allowed;
   }
 
   &:active {
