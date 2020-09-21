@@ -1,15 +1,14 @@
 <template>
-  <div>
-    Install
-  </div>
+  <div class="markdown-body" v-html="md"></div>
 </template>
 
-<script lang="ts">
+<script>
+import md from '../markdown/install.md'
 export default {
-
+  data() {
+    return {
+      md
+    }
+  }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>
