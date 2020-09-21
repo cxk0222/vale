@@ -54,7 +54,6 @@ export default {
     const menuVisible = inject < Ref < boolean >> ('menuVisible')
 
     const closeMenu = (e) => {
-      console.log('click outside')
       const target = e.target
       const isToggleIcon = () => {
         const tagName = target.tagName

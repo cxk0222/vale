@@ -47,7 +47,6 @@ export default {
   setup(props, context) {
     const loading = ref(false)
     const close = () => {
-      console.log('close')
       context.emit('update:visible', false)
     }
     const onClickOverlay = () => {
