@@ -93,9 +93,11 @@ export default {
 }
 
 aside {
-  background: lightblue;
+  // background: lightblue;
+  background: linear-gradient(180deg,#1867c0,#5cbbf6);
+  color: white;
   width: 150px;
-  padding: 16px;
+  padding: 16px 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -105,11 +107,34 @@ aside {
 
   >h2 {
     margin-bottom: 4px;
+    padding: 0 16px;
   }
 
   >ol {
     >li {
-      padding: 4px 0;
+      >a {
+        position: relative;
+        display: block;
+        padding: 8px 16px;
+        text-decoration: none;
+        &::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 0;
+          height: 0;
+          width: 3px;
+          border-radius: 0 3px 3px 0;
+          background: white;
+          transition: all .25s ease;
+        }
+      }
+      .router-link-active {
+        &::before {
+          height: 75%;
+        }
+      }
     }
   }
 }
