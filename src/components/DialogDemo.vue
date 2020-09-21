@@ -1,109 +1,27 @@
 <template>
   <div>
-    <div>Dialog 示例</div>
-    <h2>visible</h2>
-    <div>
-      <Button @click="toggle1">open</Button>
-      <Dialog
-        v-model:visible="visible1"
-        :ok="ok"
-        :cancel="cancel"
-      >
-        <template v-slot:title>
-          <strong>title</strong>
-        </template>
-        <template v-slot:content>
-          <h3>content</h3>
-          <h3>description</h3>
-        </template>
-      </Dialog>
-    </div>
-
-    <h2>支持异步关闭</h2>
-    <div>
-      <Button @click="toggle2">open</Button>
-      <Dialog
-        v-model:visible="visible2"
-        :ok="asyncOk"
-        :cancel="cancel"
-      >
-        <template v-slot:title>
-          <strong>title</strong>
-        </template>
-        <template v-slot:content>
-          <h3>content</h3>
-          <h3>description</h3>
-        </template>
-      </Dialog>
-    </div>
-
-    <h2>编程式使用</h2>
-    <div>
-      <Button @click="showDialog">open</Button>
-    </div>
+    <h1>Dialog 示例</h1>
+    <Demo :component="Dialog1Demo" />
+    <Demo :component="Dialog2Demo" />
+    <Demo :component="Dialog3Demo" />
   </div>
 </template>
 
-<script>
-import Dialog from '../lib/Dialog.vue'
-import Button from '../lib/Button.vue'
-import { ref, h,  } from 'vue'
-import { openDialog } from '../lib/openDialog'
+<script lang="ts">
+import Demo from './Demo.vue'
+import Dialog1Demo from './Dialog1.demo.vue'
+import Dialog2Demo from './Dialog2.demo.vue'
+import Dialog3Demo from './Dialog3.demo.vue'
 export default {
   components: {
-    Dialog,
-    Button
+    Demo
   },
   setup() {
-    const visible1 = ref(false)
-    const visible2 = ref(false)
-    const toggle1 = () => {
-      visible1.value = !visible1.value
-    }
-    const toggle2 = () => {
-      visible2.value = !visible2.value
-    }
-    const sleep = duration => {
-      return new Promise((resolve, reject) => {
-        setTimeout(resolve, duration)
-      })
-    }
-    const ok = async () => {
-      return true
-    }
-    const asyncOk = async () => {
-      await sleep(2000)
-      return true
-    }
-    const cancel = () => {}
-
-    const showDialog = () => {
-      openDialog({
-        title: h('strong', {}, 'title'),
-        content: 'Hello',
-        ok() {
-          console.log('ok')
-        },
-        cancel() {
-          console.log('cancel')
-        }
-      })
-    }
-
     return {
-      visible1,
-      visible2,
-      toggle1,
-      toggle2,
-      ok,
-      asyncOk,
-      cancel,
-      showDialog,
+      Dialog1Demo,
+      Dialog2Demo,
+      Dialog3Demo,
     }
   }
 }
 </script>
-
-<style>
-
-</style>
