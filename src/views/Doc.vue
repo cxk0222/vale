@@ -59,6 +59,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$aside-index: 20;
+
 .layout {
   display: flex;
   flex-direction: column;
@@ -93,7 +95,6 @@ export default {
 }
 
 aside {
-  // background: lightblue;
   background: linear-gradient(180deg,#1867c0,#5cbbf6);
   color: white;
   width: 150px;
@@ -102,8 +103,8 @@ aside {
   top: 0;
   left: 0;
   padding-top: 70px;
-  z-index: 9;
   height: 100%;
+  z-index: $aside-index;
 
   >h2 {
     margin-bottom: 4px;

@@ -45,11 +45,9 @@ export default {
 <style lang="scss" scoped>
 $green: #02bcb0;
 $border-radius: 4px;
-// $color: #007974;
 $color: #ffffff;
 
 .topnavAndBanner {
-  // background: linear-gradient(145deg, rgba(227, 255, 253, 1) 0%, rgba(183, 233, 230, 1) 100%);
   background: linear-gradient(180deg,#1867c0,#5cbbf6);
   clip-path: ellipse(80% 60% at 50% 40%);
 }
@@ -83,19 +81,31 @@ $color: #ffffff;
 .features {
   margin: 64px auto;
   padding: 0 24px;
+
   @media (min-width: 800px) {
     width: 800px;
     padding: 0;
+    > ul {
+      >li {
+        width: 50%;
+      }
+    }
   }
+
   @media (min-width: 1200px) {
     width: 1200px;
     padding: 0;
+    > ul {
+      >li {
+        width: 33.3333%;
+      }
+    }
   }
+
   >ul {
     display: flex;
     flex-wrap: wrap;
     >li {
-      width: 400px;
       margin: 16px 0;
       display: grid;
       justify-content: start;
@@ -105,15 +115,18 @@ $color: #ffffff;
         "icon text";
       grid-template-columns: 80px auto;
       grid-template-rows: 1fr auto;
+
       >svg {
         grid-area: icon;
         width: 64px;
         height: 64px;
       }
+
       >h3 {
         grid-area: title;
         font-size: 28px;
       }
+
       >p {
         grid-area: text
       }
