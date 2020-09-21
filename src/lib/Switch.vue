@@ -1,7 +1,8 @@
 <template>
   <button
     class="vale-switch"
-    :class="classes"
+    :class="{ 'vale-checked': value, 'vale-disabled': disabled }"
+    :disabled="disabled"
     @click="toggle"
   >
     <span></span>
@@ -25,21 +26,21 @@ export default {
     } = props
 
     const toggle = () => {
-      console.log('toggle')
       context.emit('update:value', !props.value)
-      console.log(props.value)
     }
 
-    const classes = computed(() => {
-      return {
-        [`vale-checked`]: value,
-        [`vale-disabled`]: disabled,
-      }
-    })
+    // 不是响应式的？
+
+    // const classes = computed(() => {
+    //   return {
+    //     [`vale-checked`]: value,
+    //     [`vale-disabled`]: disabled,
+    //   }
+    // })
 
     return {
       toggle,
-      classes
+      // classes
     }
   }
 }

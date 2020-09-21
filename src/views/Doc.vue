@@ -2,7 +2,7 @@
 <div class="layout">
   <Topnav toggleMenuButtonVisible class="nav" />
   <div class="content">
-    <aside v-if="menuVisible">
+    <aside :class="{'visible': menuVisible}" v-click-outside="closeMenu">
       <h2>文档</h2>
       <ol>
         <li>
@@ -44,6 +44,8 @@ import {
   inject,
   Ref
 } from 'vue'
+import Mitt from '../plugins/mitt.js'
+
 export default {
   components: {
     Topnav
@@ -51,8 +53,30 @@ export default {
   setup() {
     const menuVisible = inject < Ref < boolean >> ('menuVisible')
 
+    const closeMenu = (e) => {
+      console.log('click outside')
+      const target = e.target
+      const isToggleIcon = () => {
+        const tagName = target.tagName
+        if (tagName === 'svg') {
+          const classList = target.classList
+          return classList.contains('toggleAside')
+        }
+        if (tagName === 'use') {
+          const xlink = target.getAttribute('xlink:href')
+          return xlink === '#icon-menu'
+        }
+      }
+      const width = document.documentElement.clientWidth
+      const shouldClose = width <= 500 ? true : false
+      if (shouldClose && !isToggleIcon()) {
+        Mitt.emit('update:menuVisible', false)
+      }
+    }
+
     return {
-      menuVisible
+      menuVisible,
+      closeMenu
     }
   }
 }
@@ -102,9 +126,15 @@ aside {
   position: fixed;
   top: 0;
   left: 0;
+  transform: translateX(-150px);
+  transition: all .25s ease;
   padding-top: 70px;
   height: 100%;
   z-index: $aside-index;
+
+  &.visible {
+    transform: translateX(0);
+  }
 
   >h2 {
     margin-bottom: 4px;

@@ -22,6 +22,8 @@ import {
   inject,
   Ref
 } from 'vue'
+import Mitt from '../plugins/mitt.js'
+
 export default {
   props: {
     toggleMenuButtonVisible: {
@@ -29,12 +31,12 @@ export default {
       default: false,
     }
   },
-  setup() {
+  setup(_, context) {
     const menuVisible = inject < Ref < boolean >> ('menuVisible')
 
     const toggleMenu = () => {
-      console.log('toggle')
-      menuVisible.value = !menuVisible.value
+      Mitt.emit('update:menuVisible', !menuVisible.value)
+      // menuVisible.value = !menuVisible.value
     }
 
     return {
@@ -55,7 +57,7 @@ $color: #007974;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 21;
   justify-content: center;
   align-items: center;
 

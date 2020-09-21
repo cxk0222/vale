@@ -6,8 +6,8 @@
         <h1>Vale UI</h1>
         <h2>一个轻量的 UI 框架</h2>
         <div class="actions">
-          <a href="https://github.com">GitHub</a>
-          <router-link to="/doc">开始</router-link>
+          <a href="https://github.com" class="github-button">GitHub</a>
+          <router-link to="/doc" class="start-button">开始</router-link>
         </div>
       </div>
     </div>
@@ -65,14 +65,31 @@ $color: #ffffff;
 
     a {
       margin: 0 8px;
-      background: $green;
-      color: white;
+      // background: $green;
+      // color: white;
       display: inline-block;
       padding: 8px 24px;
       border-radius: $border-radius;
 
-      &:hover {
-        text-decoration: none;
+      // &:hover {
+      //   text-decoration: none;
+      // }
+
+      &.github-button {
+        color: #348ad6;
+        background: #f5f5f5;
+        box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12);
+        &:hover {
+          background: #edf3fa;
+        }
+      }
+
+      &.start-button {
+        background: transparent;
+        border: 1px solid #ffffff;
+        &:hover {
+          background: fade-out($color: white, $amount: 0.95);
+        }
       }
     }
   }
