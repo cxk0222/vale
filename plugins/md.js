@@ -1,6 +1,14 @@
 import path from 'path'
 import fs from 'fs'
 import marked from 'marked'
+const Prism = require('prismjs')
+
+// 增加高亮
+marked.setOptions({
+  highlight: function (code) {
+    return Prism.highlight(code, Prism.languages.javascript, 'javascript')
+  },
+})
 
 const mdToJs = str => {
   const content = JSON.stringify(marked(str))
