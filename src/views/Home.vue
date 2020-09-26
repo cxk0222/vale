@@ -65,15 +65,9 @@ $color: #ffffff;
 
     a {
       margin: 0 8px;
-      // background: $green;
-      // color: white;
       display: inline-block;
       padding: 8px 24px;
       border-radius: $border-radius;
-
-      // &:hover {
-      //   text-decoration: none;
-      // }
 
       &.github-button {
         color: #348ad6;

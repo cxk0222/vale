@@ -1,7 +1,7 @@
 <template>
-<div class="topnav">
+<div class="topnav" :class="{'background': backgroundVisible}">
   <router-link to="/" class="logo">
-    <v-icon name="king"></v-icon>
+    <v-icon name="vale-logo"></v-icon>
   </router-link>
   <ul class="menu">
     <li>
@@ -12,7 +12,7 @@
     v-if="toggleMenuButtonVisible"
     name="menu"
     class="toggleAside"
-    @click="toggleMenu"
+    @click="toggleAsideMenu"
   />
 </div>
 </template>
@@ -29,29 +29,32 @@ export default {
     toggleMenuButtonVisible: {
       type: Boolean,
       default: false,
+    },
+    backgroundVisible: {
+      type: Boolean,
+      default: false,
     }
   },
   setup(_, context) {
     const menuVisible = inject < Ref < boolean >> ('menuVisible')
 
-    const toggleMenu = () => {
+    const toggleAsideMenu = () => {
       Mitt.emit('update:menuVisible', !menuVisible.value)
-      // menuVisible.value = !menuVisible.value
     }
 
     return {
-      toggleMenu
+      toggleAsideMenu
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-$color: #007974;
+$color: lightblue;
 
 .topnav {
   display: flex;
-  padding: 16px;
+  padding: 8px 16px;
   position: fixed;
   color: $color;
   top: 0;
@@ -60,11 +63,11 @@ $color: #007974;
   z-index: 21;
   justify-content: center;
   align-items: center;
+  background: transparent;
 
   >.logo {
     max-width: 6em;
     margin-right: auto;
-
     >svg {
       width: 32px;
       height: 32px;
@@ -83,17 +86,25 @@ $color: #007974;
   }
 
   >.toggleAside {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     position: absolute;
     left: 16px;
     top: 50%;
     transform: translateY(-50%);
     display: none;
-    background: fade-out($color: black, $amount: 0.9);
+    cursor: pointer;
   }
+}
 
-  @media (max-width: 500px) {
+// 移动端样式
+@media (max-width: 500px) {
+  .topnav.background {
+    background: #ffffff;
+    box-shadow: 0 0 2px rgba(0,0,0,0.25);
+  }
+  .topnav {
+    z-index: 19;
     >.menu {
       display: none;
     }

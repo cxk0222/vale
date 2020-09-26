@@ -18,6 +18,10 @@ Vale UI 是一款基于 Vue 3 和 TypeScript 的 UI 组件库。
 
 1. 学会编写 vite 构建工具的插件
 2. 学会编写 vue3 的插件 (和 vue2 相比只是语法微调)
+3. 了解了一些 Vue3 与 Vue2 的差异
+  - Vue3 去掉了实例 $on API，所以不能利用 Vue 来做 EventBus，得借用第三方库 Mitt
+  - Vue3 directive 的生命周期有所变更，bind 改为 mounted，unbind 改为 unmounted
+4. ...
 
 ## 本项目用到的第三方库
 

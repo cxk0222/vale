@@ -1,6 +1,6 @@
 <template>
 <div class="layout">
-  <Topnav toggleMenuButtonVisible class="nav" />
+  <Topnav toggleMenuButtonVisible backgroundVisible class="nav" />
   <div class="content">
     <aside :class="{'visible': menuVisible}" v-click-outside="closeMenu">
       <h2>文档</h2>

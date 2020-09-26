@@ -7,7 +7,6 @@ export default {
           if (!(el === event.target || el.contains(event.target))) {
             // and if it did, call method provided in attribute value
             // vnode.context[binding.expression](event)
-            // console.log('binding', binding)
             binding.value(event)
           }
         }
