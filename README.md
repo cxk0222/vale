@@ -6,7 +6,7 @@ Vale UI 是一款基于 Vue 3 和 TypeScript 的 UI 组件库。
 该官网本想使用 vuepress 等工具实现，但为了巩固一下自己 CSS 知识，也由自己亲自实现，并且支持响应式。
 
 ### 文档页
-[Vale UI 官网](https://www.google.com)
+[Vale UI 官网](https://yuriuh.github.io/vale/#/)
 
 ### 本项目的亮点
 
