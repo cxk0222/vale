@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import './svg.js'
+import '../assets/svg.js'
 export default {
   name: 'VIcon',
   props: ['name']
