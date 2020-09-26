@@ -1,9 +1,9 @@
-# 安装
+## 安装
 
 打开终端运行下列命令：
 
 ```
-npm install vale-ui
+npm install vale-ui-1
 ```
 
 或
