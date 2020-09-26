@@ -1,6 +1,8 @@
 {
-  "name": "vale",
+  "name": "vale-ui-1",
   "version": "0.0.1",
+  "files": ["dist/lib/*"],
+  "main": "dist/lib/vale.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build"

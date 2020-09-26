@@ -11,7 +11,7 @@ export default {
       vue: 'Vue',
     },
     name: 'Vale',
-    file: 'dist/lib/gulu.js',
+    file: 'dist/lib/vale.js',
     format: 'umd',
     plugins: [terser()],
   },
