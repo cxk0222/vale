@@ -8,7 +8,7 @@ Vale UI 是一款基于 Vue 3 和 TypeScript 的 UI 组件库。
 ## 本项目的亮点
 
 1. Vite 脚手架
-2. Vue3 Composition API
+2. Vue3 Composition API Vue3 Composition API (setup, onMounted, watchEffect, ref, computed 等)
 3. Typescript
 4. 项目结构清晰
 5. Git commit 非常规范
